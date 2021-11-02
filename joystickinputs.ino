@@ -1,9 +1,13 @@
 int verticalRead = A0;
 int horizontalRead = A1;
+int buzzer = 10; 
+
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+ pinMode(buzzer, OUTPUT);
+
 }
 
 void loop() {
@@ -19,6 +23,16 @@ void loop() {
     toReturn += 
     Serial.println(toReturn);
     delay(40);
+}
+  
+  
+  tone(buzzer, 1000); // plays buzzer for 1 second everytime an input is received
+  delay(1000);        
+  noTone(buzzer);     
+      
+  
+
+  
   }
 }
 
