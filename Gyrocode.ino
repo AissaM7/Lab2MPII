@@ -3,7 +3,7 @@
 
 const int MPU = 0x68; // I2C address of the MPU-6050. .
 int16_t gx, gy; // variables for gyro
-
+const int buzzer = 10; 
 char tmp[7]; // temporary variable used in convert function
 
 char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, resulting strings will have the same length in the debug monitor.
@@ -13,6 +13,7 @@ char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, r
 
 void setup() {
   Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
   Wire.begin();
   Wire.beginTransmission(MPU); // starts a transmission to the I2C slave (GY-521 board)
   Wire.write(0x6B); // PWR_MGMT_1 register
@@ -38,4 +39,14 @@ void loop() {
   
   // delay
   delay(1000);
+  
+  tone(buzzer, 1000); // plays buzzer for 1 second everytime an input is received
+  delay(1000);        
+  noTone(buzzer);   
+  
+  
+  // delay
+  delay(1000);
 }
+
+
