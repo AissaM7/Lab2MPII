@@ -1,11 +1,11 @@
 int verticalRead = A0;
 int horizontalRead = A1;
-int buzzer = 10; 
+const int buzzer = 10; 
 
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+ Serial.begin(9600);
  pinMode(buzzer, OUTPUT);
 
 }
